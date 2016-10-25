@@ -1,0 +1,38 @@
+<div class="container" style="max-width:300px">
+  <div class="middlepart">
+    <div class="panel panel-default">
+      <div class="panel-heading">Sign up</div>
+      <div class="panel-body">
+        <form name="form" method="post" novalidate="novalidate">
+          <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" unique-username="unique-username" required="required" ng-maxlength="16" ng-model="username" autofocus="autofocus" class="form-control"/><i ng-show="busy" class="glyphicon glyphicon-refresh rotating"></i><span ng-show="form.username.$dirty &amp;&amp; form.username.$error.required" class="help-block">Please choose a username</span><span ng-show="form.username.$dirty &amp;&amp; form.username.$error.isTaken" class="help-block">Username already taken</span><span ng-show="form.username.$dirty &amp;&amp; form.username.$error.invalidChars" class="help-block">Username may not contain any non-url-safe characters</span><span ng-show="form.username.$error.maxlength" class="help-block">Username cannot exceed 16 characters</span>
+          </div>
+          <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <input type="email" ng-model="email" name="email" id="email" placeholder="Email" required="required" class="form-control"/><span ng-show="form.email.$dirty &amp;&amp; form.email.$error.email" class="help-block">Email is invalid</span>
+          </div>
+          <div class="form-group">
+            <label for="country" class="control-label">Country</label>
+            <select name="country" id="country" required="required" ng-model="country" class="form-control">
+              <option ng-repeat="country in countries">{{country}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="organization" class="control-label">Organization</label>
+            <input type="text" name="organization" id="organization" placeholder="Organization" required="required" ng-model="organization" class="form-control"/><span ng-show="form.organization.$dirty &amp;&amp; form.organization.$error.required" class="help-block">Please provide your organization</span>
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" name="password" id="password" ng-model="password" required="required" match="verification" class="form-control"/><span ng-show="form.password.$dirty &amp;&amp; form.password.$error.required" class="help-block">Please enter a password</span>
+          </div>
+          <div class="form-group">
+            <label for="verification" class="control-label">Repeat password</label>
+            <input type="password" name="verification" id="verification" ng-model="verification" required="required" match="password" class="form-control"/><span ng-show="form.verification.$dirty &amp;&amp; form.verification.$error.required" class="help-block">Please repeat your password</span><span ng-show="form.verification.$dirty &amp;&amp; form.verification.$error.match &amp;&amp; !form.verification.$error.required" class="help-block">Passwords don't match</span>
+          </div>
+          <button ng-click="submitForm()" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

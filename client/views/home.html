@@ -1,0 +1,41 @@
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="img/demo.png" class="fullscreen-bg__video">
+        <source src="demokinks.mp4" type="video/mp4">
+    </video>
+</div>
+<div id="top" class="jumbotron">
+  <div class="container">
+    <h1>Kinks Finder</h1>
+    <h2>Unveil kinks in protein</h2>
+    <p><a class="btn btn-primary" href="signup">Sign Up (optional) <span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
+  </div> <!-- /.container -->
+</div> <!-- /.jumbotron -->
+
+<div class="container dark">
+  <h3 id="introduction" class="subhead">Finding kinks is as Easy as ...</h3>
+  <div class="row introductions">
+    <div class="col-md-4 col-sm-6 introduction">
+      <div ng-click="create()" class="introduction-ball clickable">
+        <span class="glyphicon glyphicon glyphicon-pencil logo-yellow"></span>
+      </div>
+      <h3>Create</h3>
+      <p>Enter PDB ID that you are interested, create your task in a seconds.</p>
+    </div> <!-- /.introduction -->
+
+    <div class="col-md-4 col-sm-6 introduction">
+      <div class="introduction-ball">
+        <span class="glyphicon glyphicon-cloud logo-blue"></span>
+      </div>
+      <h3>Calculate</h3>
+      <p>Wait for our cloud service to process your tasks.</p>
+    </div> <!-- /.introduction -->
+
+    <div class="col-md-4 col-sm-6 introduction">
+      <div ng-click="view()" class="introduction-ball clickable">
+        <span class="glyphicon glyphicon-list-alt logo-red"></span>
+      </div>
+      <h3>View</h3>
+      <p>Collect the results of your tasks for later processing with pymol.</p>
+    </div> <!-- /.introduction -->
+  </div> <!-- /.row -->
+</div> <!-- /.container -->

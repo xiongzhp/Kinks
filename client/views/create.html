@@ -1,0 +1,23 @@
+<div class="container" style="color: black; max-width:500px">
+  <div class="middlepart">
+    <div ng-show="unregistered" class="well well-sm">It's easier to manage all your queries and prediction results as a registered user (optional). Sign up <a href="/signup">here</a>.</div>
+    <form name="form "class="form-horizontal" role="form" novalidate="novalidate" method="post">
+      <div class="form-group">
+        <label class="col-sm-4 control-label">INPUT PDB ID</label>
+        <div class="col-sm-8">
+          <input placeholder="eg. 2C5W" class="form-control input-sm" ng-model="pdbid" id="pdbid" name="pdbid" autofocus="autofocus" required="required" /><span ng-show="form.pdbid.$dirty &amp;&amp; form.pdbid.$error.required" class="help-block">PDB ID cannot be empty</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Enter the CAPTCHA</label>
+        <div class="col-sm-4">
+          <input class="form-control input-sm" id="code" name="code" ng-model="code" captcha-check="captcha-check" required="required" ng-maxlength="4" ng-minlength="4" /><i ng-show="busy" class="glyphicon glyphicon-refresh rotating"></i>
+        </div>
+        <img class="col-sm-4 clickable" ng-src="{{image}}" ng-click="updateCaptcha()" title="change one" />
+      </div>
+      <span ng-show="form.code.$dirty &amp;&amp; form.code.$error.required" class="help-block">Please enter validation code</span><span ng-show="form.code.$dirty &amp;&amp; form.code.$error.notMatch" class="help-block">Incorrect validation code</span>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"><button ng-click="submitJob()" class="btn btn-primary createbtn" ng-disabled="form.$invalid">Create Job</button></div>
+    </form>
+  </div>
+</div>

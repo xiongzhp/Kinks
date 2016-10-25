@@ -1,0 +1,41 @@
+<div class="container" style="max-width:1000px">
+    <div class="middlepart">
+        <div ng-show="progress">
+            <div>Calculating ...</div>
+            <div class="progress">
+                <div class="progress-bar active" role="progressbar" aria-valuenow="{{job_progress}}" aria-valuemin="0" aria-valuemax="10" ng-style="{width : ( job_progress/10.0*100 + '%' ) }">
+                <span>{{job_progress/10.0*100 | number:0}}%</span>
+                </div>
+            </div>
+            <div>The retrieval code for this job is <b>{{code}}</b>.You can track the progress or view the result of this prediction later by clicking on 'View' at the navigation and entering the retrieval code.</div>
+        </div>
+        <div ng-show="error">
+            Some error occurred. Please check the PDB ID is valid. If you have any questions, please contact xiongzhp@shanghaitech.edu.cn.
+        </div>
+        <div ng-show="finished">
+            <div class="row">
+                <div class="col-md-10"><div style="font-size: 25px">Results Snapshot</div></div>
+                <div class="col-md-2"><a ng-href="{{code}}.tar" class="btn btn-default" target="_self">Full Results</a></div>
+            </div>
+            <table class="table table-hover table-condensed ">
+                <tr>
+                    <th style="text-align: center; vertical-align: bottom;" class="col-sm-1">Chain</th>
+                    <th style="text-align: center; vertical-align: bottom;" class="col-sm-1">First Residue</th>
+                    <th style="text-align: center; vertical-align: bottom;" class="col-sm-1">Last Residue</th>
+                    <th style="text-align: center; vertical-align: bottom;" class="col-sm-1">Largest Kink Residue</th>
+                    <th style="text-align: center; vertical-align: bottom;" class="col-sm-1">Largest Kink Angle</th>
+                    <th style="text-align: center; vertical-align: bottom;" class="col-sm-7">Helix Sequence</th>
+                </tr>
+                <tr ng-repeat="result in results" class="clickable" ng-click="detail($index)">
+                    <td>{{result.chain}}</td>
+                    <td>{{result.firstresi}}</td>
+                    <td>{{result.lastresi}}</td>
+                    <td>{{result.kinkresi}}</td>
+                    <td>{{result.kinkang}}</td>
+                    <td>{{result.helix}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

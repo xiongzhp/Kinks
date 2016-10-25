@@ -1,0 +1,327 @@
+/*
+  global
+*/
+body {
+  font-size: 14px;
+  /*background: black;*/
+}
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: helvetica, arial, sans-serif;
+}
+table {
+  text-align: center; 
+}
+.logo {
+  /*width: 50px;*/
+  height: 50px;
+  padding: 5px;
+}
+.createbtn{
+    margin-bottom: 10px;
+    margin-left: -4px;
+}
+.dark{
+  color: white;
+}
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.container .clearfix {
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+}
+.container-alternate {
+  background: #f0f0f0;
+}
+.navbar {
+  background: #fff;
+}
+.navbar .navbar-brand {
+  color: #000;
+  font-weight: bold;
+  padding: 0 0 0 0;
+}
+.navbar ul.nav li a:hover {
+  box-shadow: 0 -2px red inset;
+  color: #000;
+}
+
+.progress {
+  position: relative;
+  margin-bottom: 0px;
+}
+
+.progress span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  color: #ffcb00;
+}
+
+.progress-bar {
+  overflow-x:visible;
+  white-space:nowrap;
+  color:#ffcb00;
+}
+
+/*
+  index
+*/
+.jumbotron {
+  margin-bottom: 0px;
+  height: 350px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 4.5em 0 3.5em;
+  background:transparent;
+}
+.jumbotron h1 {
+}
+.jumbotron h2 {
+  font-weight: normal;
+  line-height: 1.4em;
+  margin-bottom: 1.4em;
+}
+.jumbotron .btn {
+  color: black;
+  text-align: center;
+  font-size: 0.9em;
+  padding: 0.5em 2.5em 0.5em;
+}
+.jumbotron .btn .glyphicon {
+  margin-left: 0.2em;
+  position: relative;
+  top: 3px;
+}
+.logo-yellow {
+  color: #ffcb00;
+}
+.logo-blue {
+  color: #3435a7;
+}
+.logo-red {
+  color: #ff6969;
+}
+
+
+.skillbar {
+  position:relative;
+  display:block;
+  margin-bottom:15px;
+  width:100%;
+  background:#eee;
+  height:35px;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  -webkit-transition:0.4s linear;
+  -moz-transition:0.4s linear;
+  -ms-transition:0.4s linear;
+  -o-transition:0.4s linear;
+  transition:0.4s linear;
+  -webkit-transition-property:width, background-color;
+  -moz-transition-property:width, background-color;
+  -ms-transition-property:width, background-color;
+  -o-transition-property:width, background-color;
+  transition-property:width, background-color;
+}
+
+.skillbar-title {
+  position:absolute;
+  top:0;
+  left:0;
+  width:110px;
+  font-weight:bold;
+  font-size:13px;
+  color:#ffffff;
+  -webkit-border-top-left-radius:3px;
+  -webkit-border-bottom-left-radius:4px;
+  -moz-border-radius-topleft:3px;
+  -moz-border-radius-bottomleft:3px;
+  border-top-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+
+.skillbar-title span {
+  display:block;
+  padding:0 20px;
+  height:35px;
+  line-height:35px;
+  -webkit-border-top-left-radius:3px;
+  -webkit-border-bottom-left-radius:3px;
+  -moz-border-radius-topleft:3px;
+  -moz-border-radius-bottomleft:3px;
+  border-top-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+
+.skillbar-bar {
+  height:35px;
+  background:#d35400;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  -webkit-transition: width 1s ease;
+  -moz-transition: width 1s ease;
+  -ms-transition: width 1s ease;
+  -o-transition: width 1s ease;
+  transition: width 1s ease;
+}
+
+.skill-bar-percent {
+  position:absolute;
+  right:10px;
+  top:0;
+  font-size:11px;
+  height:35px;
+  line-height:35px;
+  color:#000000;
+}
+
+.subhead {
+  font-size: 2em;
+  text-align: center;
+  /*margin: -1em 0 0.5em;*/
+}
+.introductions {
+  margin-bottom: 3em;
+}
+.introduction {
+  margin: 1em 0;
+  text-align: center;
+}
+.introduction .introduction-ball {
+  background: #f0f0f0;
+  border-radius: 50%;
+  color: #333;
+  display: inline-block;
+  line-height: 1em;
+  padding: 3em;
+}
+.introduction .introduction-ball .glyphicon {
+  font-size: 3em;
+  position: relative;
+  top: -3px;
+  right: 1px;
+}
+.introduction h3 {
+  font-size: 1.5em;
+}
+
+.reference p {
+  line-height: 1.5em;
+  margin: 1em 0;
+}
+.reference p:last-child {
+  margin-bottom: 4em;
+}
+
+.middlepart {
+  margin: 6.5em 0 2.5em 0;
+}
+
+.jsme {
+  margin: 0.5em 0 1.5em 0;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+input.ng-invalid.ng-dirty {
+  border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+}
+
+.help-block {
+  color: #b94a48;
+}
+
+input.ng-valid.ng-dirty {
+  border-color: #468847;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  float: right;
+  position: relative;
+  top: -24px;
+  right: 10px;
+  -webkit-animation: rotating 1s linear infinite;
+}
+
+.rotatinginline {
+  -webkit-animation: rotating 1s linear infinite;  
+}
+
+.glyphicon-question-sign {
+  font-size: 12px;
+}
+
+.tooltip-inner {
+    max-width: 500px;
+    /* If max-width does not work, try using width instead */
+    width: 500px; 
+}
+
+footer {
+  background: #111;
+  color: #fff;
+  padding: 1.5em 0 0.8em;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar ul.nav li {
+    text-align: center;
+  }
+  .navbar ul.nav li button {
+    margin: 1em 0;
+  }
+  .jumbotron {
+    font-size: 14px;
+    padding: 6em 0 4em;
+  }
+  .introduction {
+    margin-bottom: 2em;
+  }
+}
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+  .jumbotron {
+    font-size: 12px;
+  }
+  footer .pull-right {
+    display: none;
+  }
+}
