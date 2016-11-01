@@ -27,7 +27,10 @@ if __name__ == "__main__":
                       help = 'PDB number of first and last residues in each helix.'+ 
                       ' E.g "10-25 45-60" ',
                       metavar='') #does not work with more than one pdb_code
-  
+  # for pass jobid
+  parser.add_argument('-j', '--jobid', action= 'store', help = 'Jobid' +
+                      ' input current jobid')
+
   args = parser.parse_args(sys.argv[1:])
   if len(sys.argv) == 1:
     parser.print_help() 
@@ -48,7 +51,7 @@ if __name__ == "__main__":
   display= args.display # display text output whilst running
   output_path = args.output_dir
   if args.pymol:
-    pymol_file_directory = 'Pymol_files'+os.sep  #directory where the pymol files will be written to.
+    pymol_file_directory = 'Pymol_script'+os.sep  #directory where the pymol files will be written to.
   else:
     pymol_file_directory = 'none'
   
@@ -56,6 +59,7 @@ if __name__ == "__main__":
   if output_path[-1] != os.sep:
     output_path = output_path+os.sep #add a path seperator to the end of the output path, if it does not end with one
   
+  jobid = args.jobid
   #======================================================================#
   # More advanced arguments that cannot be changed from the command line #
   #======================================================================#  
@@ -77,5 +81,5 @@ if __name__ == "__main__":
   tem_extension = '.tem' #file extenstion of the annotation file. The annotation files are expected to have the same name as the structure files. E.g. 3EMLA.pdb would have annotation file 3EMLA.tem.
   
   kink_finder(directory, pdb_extension, tem_extension, filename, output_path, 
-              soluble, display, break_angle, pymol_file_directory, 
+              jobid, soluble, display, break_angle, pymol_file_directory, 
               in_out, max_loop_length, user_helices, path)

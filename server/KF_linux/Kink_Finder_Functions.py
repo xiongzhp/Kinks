@@ -13,7 +13,8 @@ from prosci.util.residue import ResidueList
 from prosci.util.ali import Ali #parses tem_file
 from prosci.util.pdb3d import fit_line
 
-
+import pymongo
+from bson.objectid import ObjectId
 #############################################################
 # Some definitions
 #############################################################
@@ -302,7 +303,7 @@ def rmsd(crds1, crds2):
 
 
 def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
-                soluble, display, break_angle, pymol_file_directory, 
+                jobid, soluble, display, break_angle, pymol_file_directory, 
                 in_out, max_loop_length, user_helices,path):
   
   
@@ -466,8 +467,8 @@ def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
         print '                   Largest    Largest       '
         print '       First   Last   Kink       Kink     Helix'
         print 'Chain   Resi   Resi   Resi      Angle     Sequence'
-      #print tm_helices
-      
+      # print tm_helices
+      results = []
       for start, end in tm_helices:
         # stop if it is too short - i.e we cannot fit two consecutive cylinders to it
         if end-start < 2*helix_vector_length:
@@ -709,7 +710,6 @@ def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
         wobble_angles = []
         outside_helix =[] 
         angles = []
-        
         for i in xrange(len(new_cylinder_c)):
           angles.append(abs(math.degrees(angle(new_cylinder_n[i][3:6], 
                                      new_cylinder_c[i][3:6]))))
@@ -835,6 +835,7 @@ def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
                                         best_n_cylinder[0:3],
                                         best_n_cylinder[3:6],
                                         best_c_cylinder[3:6]))
+
           for i in xrange(helix_vector_length,2*helix_vector_length):
             #these must have the c and v  vectors reversed. As now effectively looking 
             #from the other end of the helix, these are 360-angle
@@ -855,6 +856,7 @@ def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
     #      position_correction = ((abs(180 - wobble_angles_kink
     #                                           [(helix_vector_length - 2):
     #                                            (helix_vector_length + 2)])).argmin())
+
           #=========================================================================
           # This is repositioning the kink
           #=========================================================================
@@ -904,12 +906,26 @@ def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
                            pdb[corrected_kink_position_protein].CA.ires, kink_angle,
                            pymol_file_dir=pymol_file_directory)
           
-        
+
+        #==========================================================================
+        # save to mongo
+        #==========================================================================
+        results.append({
+          '_id': ObjectId(),
+          'chain': pdb_code,
+          'firstresi': res_number_formatter.format(pdb[start].CA.ires),
+          'lastresi': res_number_formatter.format(pdb[end-1].CA.ires),
+          'kinkresi': res_number_formatter.format(pdb[helix_corrected_biggest_kink_position_protein].CA.ires),
+          'kinkang': display_formatter.format(helix_kink_angle),
+          'helix': sequence[start:end]
+        })
+
         #==========================================================================
         # Now, print the helix info, displaying it if desired
         #==========================================================================
         
         #print the info about the helix
+
         if display == True:
           
           #print pdb_code, maxangle, pdb[maxpos].CA.ires, angles
@@ -937,7 +953,10 @@ def kink_finder(directory, pdb_extension, tem_extension, filename, output_path,
         #==========================================================================
         end_pymol_file(pdb_code, pdb[start].CA.ires,pymol_file_dir=pymol_file_directory)
         
-        
+      mongo = pymongo.MongoClient('mongodb://xiong:xiong@ds035014.mlab.com:35014/kinks')
+      db = mongo.kinks
+      db.jobs.update({'_id': ObjectId(jobid)}, {'$set':{'results': results}})
+  
   return
 
 def parse_file_for_helices(filename, chain_code):
