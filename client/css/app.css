@@ -54,8 +54,8 @@ table {
   background: #fff;
 }
 .navbar .navbar-brand {
-  color: #000;
-  font-weight: bold;
+  color: #9e9e9e;
+  /*font-weight: bold;*/
   padding: 0 0 0 0;
 }
 .navbar ul.nav li a:hover {
@@ -294,7 +294,7 @@ input.ng-valid.ng-dirty {
 }
 
 footer {
-  background: #111;
+  background: #BF360C;
   color: #fff;
   padding: 1.5em 0 0.8em;
 }

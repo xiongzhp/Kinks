@@ -1,2 +1,2 @@
 # Kinks
-Webserver for Kinks finder
+Webserver for Kink finder
